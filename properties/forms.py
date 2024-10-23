@@ -29,7 +29,7 @@ class TenantForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'الاسم الأول'}),
             'last_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'الاسم الأخير'}),
             'phone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'أدخل رقم الهاتف'}),
-            'email': forms.EmailField(attrs={'class':'form-control', 'placeholder':'أدخل البريد الإلكتروني'}),
+            'email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'أدخل البريد الإلكتروني'}),
         }
         
 class ContractForm(forms.ModelForm):
