@@ -48,7 +48,7 @@ class ContractForm(forms.ModelForm):
             'tenant': forms.Select(attrs={'class':'form-control'}),
             'start_date': forms.DateInput(attrs={'class':'form-control','type':'date'}),
             'end_date': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
-            'monthly_rent'L forms.NumberInput(attrs={'class':'form-control', 'placeholder':'أدخل مبلغ الإيجار'}),
+            'monthly_rent': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'أدخل مبلغ الإيجار'}),
         }
 class PaymentForm(forms.ModelForm):
     class Meta:
