@@ -31,7 +31,7 @@ class PropertyCreateView(CreateView):
     success_url = reverse_lazy('property_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم إضافة العقار بنجاح')
+        messages.success(self.request, 'تم إضافة العقار بنجاح')
         return super().form_valid(form)
 
 class PropertyUpdateView(UpdateView):
