@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ('name', 'address', 'property_type', 'num_rooms', 'available', 'description')
+        fields = ['name', 'address', 'property_type', 'num_rooms', 'available', 'description']
         labels = {
             'name': _('اسم العقار'),
             'address': _('عنوان العقار'),
@@ -20,7 +20,7 @@ class PropertyForm(forms.ModelForm):
 class TenantForm(forms.ModelForm):
     class Meta:
         model = Tenant
-        fields = ('first_name', 'last_name', 'phone', 'email', 'address', 'id_number')
+        fields = ['first_name', 'last_name', 'phone', 'email', 'address', 'id_number']
         labels = {
             'first_name': _('الاسم الاول'),
             'last_name': _('الاسم الاخير'),
@@ -36,7 +36,7 @@ class TenantForm(forms.ModelForm):
 class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
-        fields = ('property', 'tenant', 'start_date', 'end_date', 'monthly_rent', 'deposit', 'notes', 'is_active')
+        fields = ['property', 'tenant', 'start_date', 'end_date', 'monthly_rent', 'deposit', 'notes', 'is_active']
         labels = {
             'property': _('العقار'),
             'tenant': _('المستأجر'),
@@ -56,7 +56,7 @@ class ContractForm(forms.ModelForm):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model= Payment
-        fields = ('contract', 'payment_date', 'amount', 'is_late', 'notes')
+        fields = ['contract', 'payment_date', 'amount', 'is_late', 'notes']
         labels = {
             'contract': _('العقد'),
             'payment_date': _('تاريخ الدفع'),
@@ -76,7 +76,7 @@ class MantenanceEventForm(forms.ModelForm):
         labels = {
             'property': _('العقار'),
             'description': _('وصف الصيانة'),
-            'event_date': _('تاريخ الصيانة')
+            'event_date': _('تاريخ الصيانة'),
             'cost': _('التكلفة الصيانة'),
             'resolved': _('تم المعالجة'),
         }
@@ -87,7 +87,7 @@ class MantenanceEventForm(forms.ModelForm):
 class PropertySearchForm(forms.Form):
     name = forms.CharField(label=_('اسم العقار'), required=False, widget=forms.TextInput(attrs={'placeholder':'ابحث عن العقار'}))
     address = forms.CharField(label=_('عنوان العقار'), required=False)
-    property_type = forms.Choices(choices=[('', 'أختر نوع العقار')] + Property.PROPERTY_TYPES, required=False, label='نوع العقار')
+    property_type = forms.ChoiceField(choices=[('', 'أختر نوع العقار')] + Property.PROPERTY_TYPES, required=False, label='نوع العقار')
     available = forms.BooleanField(label=_('متاح'), required=False)
 
 class TenantSearchForm(forms.Form):
