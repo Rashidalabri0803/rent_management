@@ -28,8 +28,8 @@
       {% for property in properties %}
       <tr>
         <td>{{ property.name }}</td>
-        <td>{{ property.git_property_type_display }}</td>
-        <td>{{ property.location }}</td>
+        <td>{{ property.property_type }}</td>
+        <td>{{ property.addre }}</td>
         <td>{{ property.price }} ر.ع</td>
         <td>{% if property.available %}متاح{% else %}مؤجر{% endif %}</td>
         <td>
