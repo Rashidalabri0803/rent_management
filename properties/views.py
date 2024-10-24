@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import Property, Tenant, Contract, Payment, MaintenanceEvent
-from .forms import PropertyForm, TenantForm, ContractForm, PaymentForm, MaintenanceEventForm, PropertySearchForm, TenantSearchForm
+from .forms import PropertyForm, TenantForm, ContractForm, PaymentForm, MantenanceEventForm, PropertySearchForm, TenantSearchForm
 # Create your views here.
 
 class PropertyListView(ListView):
@@ -200,7 +200,7 @@ class MaintenanceEventListView(ListView):
 
 class MaintenanceEventCreateView(CreateView):
     model = MaintenanceEvent
-    form_class = MaintenanceEventForm
+    form_class = MantenanceEventForm
     template_name = 'maintenance_event_form.html'
     success_url = reverse_lazy('maintenance_event_list')
 
@@ -210,7 +210,7 @@ class MaintenanceEventCreateView(CreateView):
 
 class MaintenanceEventUpdateView(UpdateView):
     model = MaintenanceEvent
-    form_class = MaintenanceEventForm
+    form_class = MantenanceEventForm
     template_name = 'maintenance_event_form.html'
     success_url = reverse_lazy('maintenance_event_list')
 
