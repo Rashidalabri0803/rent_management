@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>قائمة الدفعوعات</h2>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>العقد</th>
+            <th>تاريخ الدفع</th>
+            <th>المبلغ</th>
+            <th>متأخر</th>
+            <th>الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.contract.property.name }} - {{ payment.contract.tenant.first_name }} {{ payment.contract.tenant.last_name }}</td>
+            <td>{{ payment.payment_date }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.is_late|yesno:"متأخر,غير متأخر" }}</td>
+            <td>
+                <a href="{% url 'payment_edit' payment.pk %}" class="btn btn-primary">تعديل</a>
+                <a href="{% url 'payment_delete' payment.pk %}" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+      {% empty %}
+      <tr>
+          <td colspan="5">لا توجد مدفوعات</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'payment_add' %}" class="btn btn-success">إضافة دفعة جديدة</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>قائمة العقود</h2>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>العقار</th>
+            <th>المستأجر</th>
+            <th>تاريخ البدء</th>
+            <th>تاريخ الانتهاء</th>
+            <th>الإيجار الشهري</th>
+            <th>الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contract in contracts %}
+        <tr>
+            <td>{{ contract.property.name }}</td>
+            <td>{{ contract.tenant.first_name }} {{ contract.tenant.last_name }}</td>
+            <td>{{ contract.start_date }}</td>
+            <td>{{ contract.end_date }}</td>
+            <td>{{ contract.monthly_rent }}</td>
+            <td>
+                <a href="{% url 'contract_edit' contract.pk %}" class="btn btn-primary">تعديل</a>
+                <a href="{% url 'contract_delete' contract.pk %}" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+      {% empty %}
+      <tr>
+          <td colspan="6">لا توجد عقود.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'contract_add' %}" class="btn btn-success">إضافة عقد جديد</a>
+{% endblock %}

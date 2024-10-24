@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>قائمة المستأجرين</h2>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>الأسم الأول</th>
+            <th>الأسم الأخير</th>
+            <th>رقم الهاتف</th>
+            <th>البريد الإلكتروني</th>
+            <th>الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tenant in tenants %}
+        <tr>
+            <td>{{ tenant.first_name }}</td>
+            <td>{{ tenant.last_name }}</td>
+            <td>{{ tenant.phone }}</td>
+            <td>{{ tenant.email }}</td>
+            <td>
+                <a href="{% url 'tenant_edit' tenant.pk %}" class="btn btn-primary">تعديل</a>
+                <a href="{% url 'tenant_delete' tenant.pk %}" class="btn btn-danger">حذف</a>
+            </td>
+        </tr>
+      {% empty %}
+        <tr>
+            <td colspan="5">لا توجد مستأجرين.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'tenant_add' %}" class="btn btn-success">إضافة مستأجر جديد</a>
+{% endblock %}
