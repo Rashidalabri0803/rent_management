@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>تفاصيل العقار</h2>
+<table>
+  <tr>
+    <th>اسم العقار</th>
+    <td>{{ property.name }}</td>
+  </tr>
+  <tr>
+    <th>نوع العقار</th>
+    <td>{{ property.property_type }}</td>
+  </tr>
+  <tr>
+    <th>الموقع</th>
+    <td>{{ property.location }}</td>
+  </tr>
+  <tr>
+    <th>السعر</th>
+    <td>{{ property.price }}</td>
+  </tr>
+  <tr>
+    <th>الحالة</th>
+    <td>{{ property.status }}</td>
+  </tr>
+  <tr>
+    <th>الوصف</th>
+    <td>{{ property.description }}</td>
+  </tr>
+</table>
+</div>
+{% endblock %}
