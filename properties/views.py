@@ -41,7 +41,7 @@ class PropertyUpdateView(UpdateView):
     success_url = reverse_lazy('property_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم تحديث العقار بنجاح')
+        messages.success(self.request, 'تم تحديث العقار بنجاح')
         return super().form_valid(form)
 
 class PropertyDeleteView(DeleteView):
@@ -50,7 +50,7 @@ class PropertyDeleteView(DeleteView):
     success_url = reverse_lazy('property_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.sucess(self.request, 'تم حذف العقار بنجاح')
+        messages.success(self.request, 'تم حذف العقار بنجاح')
         return super().delete(request, *args, **kwargs)
 
 class TenantListView(ListView):
@@ -66,7 +66,7 @@ class TenantCreateView(CreateView):
     success_url = reverse_lazy('tenant_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم إضافة المستأجر بنجاح')
+        messages.success(self.request, 'تم إضافة المستأجر بنجاح')
         return super().form_valid(form)
 
 class TenantUpdateView(UpdateView):
@@ -76,7 +76,7 @@ class TenantUpdateView(UpdateView):
     success_url = reverse_lazy('tenant_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم تحديث المستأجر بنجاح')
+        messages.success(self.request, 'تم تحديث المستأجر بنجاح')
         return super().form_valid(form)
 
 class TenantDeleteView(DeleteView):
@@ -85,7 +85,7 @@ class TenantDeleteView(DeleteView):
     success_url = reverse_lazy('tenant_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.sucess(self.request, 'تم حذف المستأجر بنجاح')
+        messages.success(self.request, 'تم حذف المستأجر بنجاح')
         return super().delete(request, *args, **kwargs)
 
 class ContractListView(ListView):
@@ -101,7 +101,7 @@ class ContractCreateView(CreateView):
     success_url = reverse_lazy('contract_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم إضافة العقد بنجاح')
+        messages.success(self.request, 'تم إضافة العقد بنجاح')
         return super().form_valid(form)
 
 class ContractUpdateView(UpdateView):
@@ -111,7 +111,7 @@ class ContractUpdateView(UpdateView):
     success_url = reverse_lazy('contract_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم تحديث العقد بنجاح')
+        messages.success(self.request, 'تم تحديث العقد بنجاح')
         return super().form_valid(form)
 
 class ContractDeleteView(DeleteView):
@@ -120,7 +120,7 @@ class ContractDeleteView(DeleteView):
     success_url = reverse_lazy('contract_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.sucess(self.request, 'تم حذف العقد بنجاح')
+        messages.success(self.request, 'تم حذف العقد بنجاح')
         return super().delete(request, *args, **kwargs)
 
 class PaymentListView(ListView):
@@ -136,7 +136,7 @@ class PaymentCreateView(CreateView):
     success_url = reverse_lazy('payment_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم إضافة الدفعة بنجاح')
+        messages.success(self.request, 'تم إضافة الدفعة بنجاح')
         return super().form_valid(form)
 
 class PaymentUpdateView(UpdateView):
@@ -146,7 +146,7 @@ class PaymentUpdateView(UpdateView):
     success_url = reverse_lazy('payment_list')
 
     def form_valid(self, form):
-        messages.sucess(self.request, 'تم تحديث الدفعة بنجاح')
+        messages.success(self.request, 'تم تحديث الدفعة بنجاح')
         return super().form_valid(form)
 
 class PaymentDeleteView(DeleteView):
@@ -154,5 +154,5 @@ class PaymentDeleteView(DeleteView):
     template_name = 'payment_confirm_delete.html'
     success_url = reverse_lazy('payment_list')
     def delete(self, request, *args, **kwargs):
-        messages.sucess(self.request, 'تم حذف الدفعة بنجاح')
+        messages.success(self.request, 'تم حذف الدفعة بنجاح')
         return super().delete(request, *args, **kwargs)
