@@ -1,37 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>قائمة العقارات</h2>
+<div class="container mt-4">
+  <h2>قائمة العقارات</h2>
+  < form method="GET" class="form-inline mb-4">
+    <input type="text" name="name" placeholder="ابحث عن اسم العقار" class="form-control mr-2" value="{{ request.GET.name }}">
+    <select name="property_type" class="form-control mr-2">
+      <option value="">نوع العقار</option>
+      <option value="apartment">شقة</option>
+      <option value="house">منزل</option>
+    </select>
+    <button type="submit" class="btn btn-primary">بحث</button>
+  </form>
 
-<form method="GET" action="">
-  {{ form.query }}
-  <button type="submit" class="btn btn-primary">بحث</button>
-</form>
-
-<table class="table table-bordered mt-3">
-  <thead>
-    <tr>
-      <th>اسم العقار</th>
-      <th>العنوان</th>
-      <th>الإجراءات</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for property in properties %}
-    <tr>
-      <td>{{ property.name }}</td>
-      <td>{{ property.address }}</td>
-      <td>
-        <a href="{% url 'property_edit' property.pk %}" class="btn btn-info btn-sm">تعديل</a>
-        <a href="{% url 'property_delete' property.pk %}" class="btn btn-danger btn-sm">حذف</a>
-      </td>
-    </tr>
-    {% empty %}
-    <tr>
-      <td colspan="3">لا توجد عقارات</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-<a href="{% url 'property_add' %}" class="btn btn-success">إضافة عقار جديد</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>اسم العقار</th>
+        <th>النوع</th>
+        <th>الموقع</th>
+        <th>السعر</th>
+        <th>الحالة</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for property in properties %}
+      <tr>
+        <td>{{ property.name }}</td>
+        <td>{{ property.git_property_type_display }}</td>
+        <td>{{ property.location }}</td>
+        <td>{{ property.price }} ر.ع</td>
+        <td>{% if property.available %}متاح{% else %}مؤجر{% endif %}</td>
+        <td>
+          <a href="{% url 'property_detail' property.pk %}" class="btn btn-info btn-sm">عرض</a>
+          <a href="{% url 'property_edit' property.pk %}" class="btn btn-warning btn-sm">تعديل</a>
+          <a href="{% url 'property_delete' property.pk %}" class="btn btn-danger btn-sm">حذف</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">لا توجد عقارات مسجلة</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <nav>
+    <ul class="pagination">
+      {% if properties.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ properties.previous_page_number }}">&laquo;</a></li>
+      {% endif %}
+      {% for page in properties.paginator.page_range %}
+      <li class="page-item{% if properties.number == num %} active{% endif %}">
+        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+      </li>
+      {% endfor %}
+      {% if properties.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ properties.next_page_number }}">&raquo;</a>
+    </ul>
+  </nav>
+</div>
 {% endblock %}
