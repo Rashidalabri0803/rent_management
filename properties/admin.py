@@ -74,7 +74,7 @@ class PaymentAdmin(admin.ModelAdmin):
 @admin.register(PropertyAttachment)
 class PropertyAttachmentAdmin(admin.ModelAdmin):
     list_display = ('property', 'file', 'description')
-    search_fields = ('property__name')
+    search_fields = ('property__name',)
 
 @admin.register(MaintenanceEvent)
 class MaintenanceEventAdmin(admin.ModelAdmin):
